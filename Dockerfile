@@ -1,7 +1,7 @@
 FROM n8nio/n8n:latest
 
 # Install curl
-RUN apt-get update && apt-get install -y curl
+RUN apk --no-cache add curl
 
 # Set working directory to /opt/bybit-mcp
 WORKDIR /opt/bybit-mcp
