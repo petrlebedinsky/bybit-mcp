@@ -8,9 +8,6 @@ WORKDIR /opt/bybit-mcp
 # Copy the current directory contents into the container at /opt/bybit-mcp
 COPY . .
 
-# Install PNPM the stable way
-RUN npm install -g pnpm
-
 # Then install dependencies and build
 RUN pnpm install && pnpm build
 
