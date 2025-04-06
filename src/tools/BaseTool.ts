@@ -223,7 +223,7 @@ export abstract class BaseToolImplementation {
       type: "text",
       text: JSON.stringify({
         tool: this.name,
-        error: errorMessage,
+        error: JSON.stringify(errorMessage),
         code: error.code,
         status: error.status,
         timestamp: new Date().toISOString()
