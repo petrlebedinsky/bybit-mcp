@@ -219,11 +219,13 @@ export abstract class BaseToolImplementation {
       }
     }))
 
+    const stringifiedErrorMessage = JSON.stringify(errorMessage)
+
     const content: TextContent = {
       type: "text",
       text: JSON.stringify({
         tool: this.name,
-        error: JSON.stringify(errorMessage),
+        error: stringifiedErrorMessage,
         code: error.code,
         status: error.status,
         timestamp: new Date().toISOString()
