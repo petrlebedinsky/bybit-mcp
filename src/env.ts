@@ -6,6 +6,8 @@ import { existsSync } from 'fs'
 const envPath = join(process.cwd(), '.env')
 if (existsSync(envPath)) {
   config({ path: envPath })
+} else {
+  config()
 }
 
 export interface EnvConfig {
