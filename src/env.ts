@@ -4,11 +4,11 @@ import { existsSync } from 'fs'
 
 // Load environment variables from .env file if it exists
 const envPath = join(process.cwd(), '.env')
-if (existsSync(envPath)) {
-  config({ path: envPath })
-} else {
+// if (existsSync(envPath)) {
+//  config({ path: envPath })
+// } else {
   config()
-}
+//}
 
 export interface EnvConfig {
   apiKey: string | undefined
@@ -29,6 +29,9 @@ export function getEnvConfig(): EnvConfig {
 // Validate environment variables
 export function validateEnv(): void {
   const config = getEnvConfig()
+
+  console.log('API KEY:', process.env.BYBIT_API_KEY ? process.env.BYBIT_API_KEY : 'Missing');
+  console.log('API SECRET:', process.env.BYBIT_API_SECRET ? process.env.BYBIT_API_SECRET : 'Missing');
 
   // In development mode, API keys are optional
   if (!config.apiKey || !config.apiSecret) {
