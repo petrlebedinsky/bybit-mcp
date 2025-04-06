@@ -30,6 +30,7 @@ export function getEnvConfig(): EnvConfig {
 export function validateEnv(): void {
   const config = getEnvConfig()
 
+  console.warn('ALL ENV VARIABLES:', process.env);
   console.warn('API KEY:', process.env.BYBIT_API_KEY ? process.env.BYBIT_API_KEY : 'Missing');
   console.warn('API SECRET:', process.env.BYBIT_API_SECRET ? process.env.BYBIT_API_SECRET : 'Missing');
 
