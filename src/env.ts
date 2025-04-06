@@ -30,8 +30,8 @@ export function getEnvConfig(): EnvConfig {
 export function validateEnv(): void {
   const config = getEnvConfig()
 
-  console.log('API KEY:', process.env.BYBIT_API_KEY ? process.env.BYBIT_API_KEY : 'Missing');
-  console.log('API SECRET:', process.env.BYBIT_API_SECRET ? process.env.BYBIT_API_SECRET : 'Missing');
+  console.warn('API KEY:', process.env.BYBIT_API_KEY ? process.env.BYBIT_API_KEY : 'Missing');
+  console.warn('API SECRET:', process.env.BYBIT_API_SECRET ? process.env.BYBIT_API_SECRET : 'Missing');
 
   // In development mode, API keys are optional
   if (!config.apiKey || !config.apiSecret) {
