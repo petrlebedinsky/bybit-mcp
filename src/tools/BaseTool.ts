@@ -209,7 +209,13 @@ export abstract class BaseToolImplementation {
   }
 
   protected handleError(error: any): CallToolResult {
-    const errorMessage = error instanceof Error ? error.message : String(error)
+    const errorMessage =
+        error instanceof Error
+            ? error.message
+            : typeof error === 'object'
+                ? JSON.stringify(error, null, 2)
+                : String(error);
+
     console.error(JSON.stringify({
       jsonrpc: "2.0",
       method: "notify",
@@ -219,13 +225,11 @@ export abstract class BaseToolImplementation {
       }
     }))
 
-    const stringifiedErrorMessage = JSON.stringify(errorMessage)
-
     const content: TextContent = {
       type: "text",
       text: JSON.stringify({
         tool: this.name,
-        error: stringifiedErrorMessage,
+        error: errorMessage,
         code: error.code,
         status: error.status,
         timestamp: new Date().toISOString()
